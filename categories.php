@@ -148,69 +148,39 @@ EXCERPT;
                   ?>
         </ul>
       </div>
-        
-        <?php
+        <div style="display: flex">
+            <div style="flex: 70%;">
+            <?php
             include 'PDOConnect.php';
             include 'functions.php';
-           
-            //mp(listProjectByCat($base, $_GET['c']));
             foreach (listProjectByCat($base, $_GET['c']) as $project) {
                 $pseudo = getProjectOwnerNamebyEmail($base, $project['owner'])[0]['pseudo'];
                 generatePojectListViewItem($project, $pseudo);
-                //var_dump($pseudo);
             }
-        ?>
+            ?>
+        </div>
+            
+
+            <div style="flex: 30%;margin: 10px;height: 450px">
+                <div class='jumbotron' style="height: 450px;">
+                
+                </div>
+            </div>
+        </div>
         
 
+        
 
 
       <div class="footer">
         <p>&copy; Projector</p>
       </div>
 
-      <!-- Modal -->
-       <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="signupModal" aria-hidden="true">
-         <div class="modal-dialog">
-           <div class="modal-content">
-             <div class="modal-header">
-               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-             </div>
-             <div class="modal-body">
-               <form id="signupForm" role="form">
-                 <input type="hidden" id="theme" name="theme" value="<%= theme %>"/>
-                 <div class="form-group">
-                   <label for="name">Pseudo</label>
-                   <input type="text" class="form-control" id="name" name="name" placeholder="Your name">
-                 </div>
-                 <div class="form-group">
-                   <label for="email">Email</label>
-                   <input type="email" class="form-control" id="email" name="email" placeholder="Your email address">
-                 </div>
-                 <div class="form-group">
-                   <label for="password">password</label>
-                   <input type="password" class="form-control" id="password" name="password" placeholder="password">
-                   </select>
-                 </div>
-
-
-                 <div class="form-group">
-                   <label for="previewAccess">étudiant ?</label>
-                   <select class="form-control" name="previewAccess">
-                     <option>Oui</option>
-                     <option>Non</option>
-                   </select>
-                 </div>
-             </div>
-             <div class="modal-footer">
-               <button id="signup" type="button" class="btn btn-primary">S'inscrire</button>
-             </div>
-           </div><!-- /.modal-content -->
-         </div><!-- /.modal-dialog -->
-       </div><!-- /.modal -->
+      
 
     </div> <!-- /container -->
 
-    <script src=static/jquery/jquery-1.11.3.min.js"></script>
+    <script src="static/jquery/jquery-1.11.3.min.js"></script>
     <script src="static/bootstrap/js/bootstrap.min.js"></script>
     
   </body>

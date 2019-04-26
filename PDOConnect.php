@@ -67,8 +67,8 @@ function getProjectOwnerNamebyEmail(PDO $pdo,$email){
     $pdo->exec($requette);
  }
  
-  function addProject(PDO $pdo,$owner, $name, $cat, $des , $place ,$img, $vid, $mode,$goal,$lon,$lat){
-    $stmt = $pdo->prepare("INSERT INTO project_table VALUES (NULL,:owner,:name,:cat,:des,:place,:img,:vid,:mode,:goal,:lon,:lat)");
+  function addProject(PDO $pdo,$owner, $name, $cat, $des , $place ,$img, $vid, $mode,$goal,$lon,$lat,$fund){
+    $stmt = $pdo->prepare("INSERT INTO project_table VALUES (NULL,:owner,:name,:cat,:des,:place,:img,:vid,:mode,:goal,:lon,:lat,:fund)");
 
    /*** bind the paramaters ***/
    $stmt->bindParam(':owner', $owner, PDO::PARAM_STR,32);
@@ -82,6 +82,7 @@ function getProjectOwnerNamebyEmail(PDO $pdo,$email){
    $stmt->bindParam(':goal', strval($goal), PDO::PARAM_STR, 50);
    $stmt->bindParam(':lon', strval($lon), PDO::PARAM_STR, 50);
    $stmt->bindParam(':lat', strval($lat), PDO::PARAM_STR, 50);
+   $stmt->bindParam(':fund', strval($fund), PDO::PARAM_STR, 50);
    
    /*** execute the querry***/
    $stmt->execute();
@@ -91,8 +92,8 @@ function getProjectOwnerNamebyEmail(PDO $pdo,$email){
     //$pdo->exec($requette);
   }
   
-    function addProjectNolocation(PDO $pdo,$owner, $name, $cat, $des , $place ,$img, $vid, $mode,$goal){
-    $stmt = $pdo->prepare("INSERT INTO project_table VALUES (NULL,:owner,:name,:cat,:des,:place,:img,:vid,:mode,:goal,NULL,NULL)");
+    function addProjectNolocation(PDO $pdo,$owner, $name, $cat, $des , $place ,$img, $vid, $mode,$goal,$fund){
+    $stmt = $pdo->prepare("INSERT INTO project_table VALUES (NULL,:owner,:name,:cat,:des,:place,:img,:vid,:mode,:goal,NULL,NULL,:fund)");
 
    /*** bind the paramaters ***/
    $stmt->bindParam(':owner', $owner, PDO::PARAM_STR,32);
@@ -104,6 +105,7 @@ function getProjectOwnerNamebyEmail(PDO $pdo,$email){
    $stmt->bindParam(':vid', $vid, PDO::PARAM_STR, 280);
    $stmt->bindParam(':mode', $mode, PDO::PARAM_STR, 50);
    $stmt->bindParam(':goal', strval($goal), PDO::PARAM_STR, 50);
+   $stmt->bindParam(':fund', strval($fund), PDO::PARAM_STR, 50);
 
    
    /*** execute the querry***/

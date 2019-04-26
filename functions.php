@@ -72,7 +72,7 @@ echo "</div>";
   
 function generatePojectListViewItem($project,$pseudo){
     echo "<a  style='text-decoration:none; color:inherit;' href=./view?p=".$project['id'].">";
-                echo "<div class=\"jumbotron\">\n";
+    echo "<div class=\"jumbotron\" style=\"padding: 10px;font-size: 15px;font-height: 1px;\">\n";
 echo "            <table>\n";
 echo "                <tr>\n";
 echo "                <th>\n";
@@ -81,13 +81,21 @@ echo "                <div style=\"width: 200px; height:200px;overflow: hidden;d
 echo "                </div>\n";
 echo "                </th>\n";
 echo "                <th>\n";
-echo "                    <h1>".$project['name']."</h1>\n";
-echo "                    <h2>Par ".$pseudo."</h2>\n";
+echo "                    <h2>".$project['name']."</h2>\n";
+echo "                    <h3>Par ".$pseudo."</h3>\n";
 echo "                    <p>".$project['place']."</p>\n";
-echo "                    <p>But : ".$project['goal']." €</p>\n";
+echo "                    <p>".$project['mode']." : ".$project['goal']." €</p>\n";
+echo "                </th>\n";
+echo "                <th style=\"text-align: center;vertical-align: bottom; display: table-cell;\">\n";
+echo "          <progress value=".$project['fund']." max=".$project['goal']."></progress>\n";
+echo "              <p>".$project['fund']." € sur ".$project['goal']." €</p> ";
 echo "                </th>\n";
 echo "                </tr>\n";
 echo "            </table>\n";
+//echo "            <div style=\"text-align: right;\"> ";
+//echo "          <progress value=".$project['fund']." max=".$project['goal']."></progress>\n";
+//echo "              <p>".$project['fund']." € sur ".$project['goal']." €</p> ";
+//echo "          </div>";
 echo "        </div>";
 echo "</a>";
 

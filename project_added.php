@@ -35,9 +35,9 @@
               $place = json_decode((nominatimGeocodeRequest($_POST['place_field'])),true);
               var_dump($place[0]);
               if(!is_null($place)){
-                addProject($base,$_SESSION['connected_user_email'] ,$_POST['name_field'], $_POST['catlist'],$_POST['des_field'], $_POST['place_field'] ,$_POST['image_field'], $_POST['video_field'], $_POST['project_funding'],$_POST['goal_field'], $place[0]['lon'], $place[0]['lat'] ); 
+                addProject($base,$_SESSION['connected_user_email'] ,$_POST['name_field'], $_POST['catlist'],$_POST['des_field'], $_POST['place_field'] ,$_POST['image_field'], $_POST['video_field'], $_POST['project_funding'],$_POST['goal_field'], $place[0]['lon'], $place[0]['lat'],0 ); 
               }else{
-                addProjectNolocation($base,$_SESSION['connected_user_email'] ,$_POST['name_field'], $_POST['catlist'],$_POST['des_field'], $_POST['place_field'] ,$_POST['image_field'], $_POST['video_field'], $_POST['project_funding'],$_POST['goal_field']); 
+                addProjectNolocation($base,$_SESSION['connected_user_email'] ,$_POST['name_field'], $_POST['catlist'],$_POST['des_field'], $_POST['place_field'] ,$_POST['image_field'], $_POST['video_field'], $_POST['project_funding'],$_POST['goal_field'],0); 
               }      
        } 
        ?>

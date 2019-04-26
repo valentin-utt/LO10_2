@@ -50,6 +50,15 @@ include 'curl_requests.php';
                 foreach (listProject($base) as $project) { 
                     if(!is_null($project['latitude']) && !is_null($project['longitude'])){
                         echo 'var marker'.$project['id'].' = L.marker(['.$project['latitude'].','.$project['longitude'].']).addTo(macarte);';
+                        echo "\n";
+                        //echo 'marker'.$project['id'].'.bindPopup("<a href="\./view?p='.$project['id'].'">'.$project['name'].'</a>");';
+                        $centeredDiv = '<div style=\'text-align: center;\'>' ;
+                        $htmlLink = '<a href=\'./view?p='.$project['id'].'\'> '.$project['name'].' </a>';
+                        $br ='</br>';
+                        $htmlImg = '<div style=\'width: 64px; height:64px;overflow: hidden;display: inline-block;background-size: cover;background-position: center;background-image: url('.$project['img'].');-moz-border-radius: 16px;webkit-border-radius: 16px;border-radius: 16px;\'>; ';
+                        $div ='</div>' ;
+                        echo 'marker'.$project['id'].'.bindPopup("'.$centeredDiv.$htmlLink.$br.$htmlImg.$div.'");';
+                        echo "\n";
                     }
                 }
                 ?>
@@ -146,9 +155,13 @@ include 'curl_requests.php';
         <p class="lead">Le portail des projets étudiants</p>
         <p><a class="btn btn-lg btn-success"  data-toggle="modal" href="./register">Inscrivez vous maintenant</a></p>
       </div>
-        <div id="map">
+        
+        
+        <div id="map" >
   <!-- Ici s'affichera la carte -->
         </div>
+        
+        
     </div>
 
 
