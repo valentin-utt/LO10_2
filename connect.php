@@ -8,11 +8,16 @@
 
     <title>Projector</title>
 
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    
     <!-- Bootstrap core CSS -->
-    <link href="static/bootstrap/css/theme/flatly/bootstrap.css" rel="stylesheet">
+     <link href="static/bootstrap/css/theme/flatly/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="static/bootstrap/css/jumbotron-narrow.css" rel="stylesheet">
+   
     
         <script> 
     function inputValidation() 
@@ -46,17 +51,18 @@
   </head>
 
   <body>  
-    <script src="static/jquery/jquery-1.11.3.min.js"></script>
-    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+    <!-- <script src="static/jquery/jquery-1.11.3.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script> -->
       
        <?php
        session_start();
         ?>
 
     <div class="container">
+        <h1 style="text-align: center">Projector</h1>
       <div class="header" style="margin-bottom: 50px">
         <ul class="nav nav-pills pull-right">
-          <li id="homebtn" ><a href="./index">Acceuil</a></li>
+          <li id="homebtn" ><a href="./index">Accueil</a></li>
           <li id="catbtn"><a href="./categories?c=art">Projets</a></li>
           <li id="aboutbtn" ><a href="./about">A propos</a></li>
                     <?php
@@ -69,10 +75,11 @@
               echo '<li id="connectbtn"><a href="./disconnect">Se déconnecter</a></li>';
           }else{
               
-              echo '<li id="connectbtn"><a href="./connect">Se connecter</a></li>';
+              echo '<li id="connectbtn" class="active"><a href="./connect">Se connecter</a></li>';
           }
           ?>
         </ul>
+          <div class="header" style="margin-bottom: 40px">
         <ul class="nav nav-pills pull-left">
                       <?php
             if(isset($_POST['user_connected'])){
@@ -82,6 +89,7 @@
             }
            ?>
         </ul>
+          </div>
       </div>
       <div id="signupSuccess" class="alert alert-success" style="display:none">
         <p id="signupSuccessText">Merci de vous être inscrits</p>
@@ -92,21 +100,27 @@
       <div id="signupError" class="alert alert-info" style="display:none">
         <p id="signupErrorText">Erreur lors de l'inscription</p>
       </div>
-      <div class="jumbotron">
+        <div style="margin-bottom: 50px">
           <form action="./index.php" method="post" id="connect_form" name="connect_form" onsubmit="return inputValidation()">
 
+              <div class="form-group">
+                <label for="user_email">Email : </label>
+                <input  class="form-control" id="user_email" type="text" name="user_email" value="mio@utt.fr">
+                </br>
+            </div>
 
-            <label for="user_email">Email : </label>
-          <input id="user_email" type="text" name="user_email" value="mio@utt.fr">
+          <div class="form-group">
+                <label for="user_password">Mot de Passe : </label>
+                <input  class="form-control" id="user_password" type="password" name="user_password" value="secret">
           </br>
-          
-          <label for="user_password">Password</label>
-          <input id="user_password" type="password" name="user_password" value="secret">
-          </br>
+          </div>
+           
+              
+            <input hidden id="user_connection_attempt" type="password" name="user_connection_attempt" value="true">
+            <div style="text-align: center">
+                <input type="submit" class="btn btn-default" value="Se connecter">
+            </div>
             
-          <input hidden id="user_connection_attempt" type="password" name="user_connection_attempt" value="true">
-          
-          <input type="submit" value="OK">
           </form>
       </div>
 

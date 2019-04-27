@@ -66,11 +66,12 @@
         ?>
 
     <div class="container">
+        <h1 style="text-align: center">Projector</h1>
       <div class="header" style="margin-bottom: 50px">
         <ul class="nav nav-pills pull-right">
-          <li id="homebtn" ><a href="./index">Acceuil</a></li>
+          <li id="homebtn" ><a href="./index">Accueil</a></li>
           <li id="catbtn"><a href="./categories?c=art">Projets</a></li>
-          <li id="aboutbtn" class="active"><a href="./about">A propos</a></li>
+          <li id="aboutbtn" ><a href="./about">A propos</a></li>
                      <?php
           
           if(isset($_POST['user_connected'])){
@@ -85,6 +86,7 @@
           }
           ?>
         </ul>
+          <div class="header" style="margin-bottom: 40px">
         <ul class="nav nav-pills pull-left">
             <?php
             if(isset($_POST['user_connected'])){
@@ -94,6 +96,7 @@
             }
            ?>
         </ul>
+          </div>
       </div>
       <div id="signupSuccess" class="alert alert-success" style="display:none">
         <p id="signupSuccessText">Merci de vous être inscrits</p>
@@ -104,29 +107,37 @@
       <div id="signupError" class="alert alert-info" style="display:none">
         <p id="signupErrorText">Erreur lors de l'inscription</p>
       </div>
-      <div class="jumbotron">
+      <div style="margin-bottom: 50px">
           <form action="./index.php" name="register_form" onsubmit="return inputValidation()" method="post" id="register_form">
 
-          <label for="user_name">Nom : </label>
-          <input id="user_name" type="text" name="user_name_field" value="Mio">
+          <div class="form-group">
+            <label for="user_name">Nom : </label>
+            <input class="form-control" id="user_name" type="text" name="user_name_field" value="Mio">
             </br>
+          </div>
 
+          <div class="form-group">
             <label for="user_email">Email : </label>
-          <input id="user_email" type="text" name="user_email" value="mio@utt.fr">
+          <input class="form-control" id="user_email" type="text" name="user_email" value="mio@utt.fr">
           </br>
+          </div>
           
-          <label for="user_password">Password</label>
-          <input id="user_password" type="password" name="user_password" value="secret">
-          </br>
+              <div class="form-group">
+                <label for="user_password">Mot de Passe :</label>
+                <input class="form-control" id="user_password" type="password" name="user_password" value="secret">
+                </br>
+              </div>
             
-          <label for="is_user_student">Etudiant : </label>
+          <label for="is_user_student" style="text-align: center;margin-bottom: 20px" >Etudiant : </label>
           <select id="is_user_student" name="is_user_student" form="register_form">
             <option value="yes">Oui</option>
             <option value="no">Non</option>
           </select>
           </br>
 
-          <input type="submit" value="OK">
+          <div style="text-align: center">
+            <input   class="btn btn-default" type="submit" value="Se connecter">
+          </div>
           </form>
       </div>
 
@@ -137,8 +148,8 @@
 
     </div> <!-- /container -->
 
-    <script src="static/jquery/jquery-1.11.3.min.js"</script>
-    <script src="static/bootstrap/js/bootstrap.min.js"</script>
+    <script src="static/jquery/jquery-1.11.3.min.js"></script>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
     
   </body>
 </html>

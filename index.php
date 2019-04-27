@@ -89,9 +89,10 @@ include 'curl_requests.php';
         
     
     <div class="container">
+        <h1 style="text-align: center">Projector</h1>
       <div class="header" style="margin-bottom: 50px">
         <ul class="nav nav-pills pull-right">
-            <li id="homebtn" class="active"><a href="./index.php">Acceuil</a></li>
+            <li id="homebtn" class="active"><a href="./index.php">Accueil</a></li>
           <li id="catbtn"><a href="./categories.php?c=art">Projets</a></li>
           <li id="aboutbtn"><a href="./about.php">A propos</a></li>
           <?php
@@ -130,6 +131,7 @@ include 'curl_requests.php';
           }
           ?>
         </ul>
+          <div class="header" style="margin-bottom: 40px">
         <ul class="nav nav-pills pull-left">
             <?php
             if(isset($_POST['user_connected'])){    
@@ -139,6 +141,7 @@ include 'curl_requests.php';
             }
            ?>
         </ul>
+            </div>
       </div>
 	  
       <div id="signupSuccess" class="alert alert-success" style="display:none">
@@ -151,7 +154,7 @@ include 'curl_requests.php';
         <p id="signupErrorText">Erreur lors de l'inscription</p>
       </div>
       <div class="jumbotron">
-        <h1>Projector</h1>
+        
         <p class="lead">Le portail des projets étudiants</p>
         <p><a class="btn btn-lg btn-success"  data-toggle="modal" href="./register">Inscrivez vous maintenant</a></p>
       </div>

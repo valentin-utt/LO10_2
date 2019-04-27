@@ -25,7 +25,7 @@
       
        <?php 
        session_start();
-       var_dump($_POST);
+       //var_dump($_POST);
        //var_dump($_SESSION);
        
        if(isset($_POST['name_field'])){
@@ -33,7 +33,7 @@
               include 'curl_requests.php';
               //addUser($base, $_POST['user_name_field'],$_POST['user_email'], $_POST['user_password'], $_POST['is_user_student']);
               $place = json_decode((nominatimGeocodeRequest($_POST['place_field'])),true);
-              var_dump($place[0]);
+              //var_dump($place[0]);
               if(!is_null($place)){
                 addProject($base,$_SESSION['connected_user_email'] ,$_POST['name_field'], $_POST['catlist'],$_POST['des_field'], $_POST['place_field'] ,$_POST['image_field'], $_POST['video_field'], $_POST['project_funding'],$_POST['goal_field'], $place[0]['lon'], $place[0]['lat'],0 ); 
               }else{
@@ -43,9 +43,10 @@
        ?>
 
     <div class="container">
+        <h1 style="text-align: center">Projector</h1>
       <div class="header" style="margin-bottom: 50px">
         <ul class="nav nav-pills pull-right">
-          <li id="homebtn" ><a href="./index">Acceuil</a></li>
+          <li id="homebtn" ><a href="./index">Accueil</a></li>
           <li id="catbtn"><a href="./categories?c=art">Projets</a></li>
           <li id="aboutbtn" class="active"><a href="./about">A propos</a></li>
                     <?php
@@ -62,6 +63,7 @@
           }
           ?>
         </ul>
+          <div class="header" style="margin-bottom: 40px">
         <ul class="nav nav-pills pull-left">
 <?php
             if(isset($_POST['user_connected'])){
@@ -71,6 +73,7 @@
             }
            ?>
         </ul>
+          </div>
       </div>
       <div id="signupSuccess" class="alert alert-success" style="display:none">
         <p id="signupSuccessText">Merci de vous être inscrits</p>

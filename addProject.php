@@ -77,9 +77,10 @@
         ?>
 
     <div class="container">
+        <h1 style="text-align: center">Projector</h1>
       <div class="header" style="margin-bottom: 50px">
         <ul class="nav nav-pills pull-right">
-          <li id="homebtn" ><a href="./index">Acceuil</a></li>
+          <li id="homebtn" ><a href="./index">Accueil</a></li>
           <li id="catbtn"><a href="./categories?c=art">Projets</a></li>
           <li id="aboutbtn"><a href="./about">A propos</a></li>
                     <?php
@@ -96,15 +97,17 @@
           }
           ?>
         </ul>
+          <div class="header" style="margin-bottom: 40px">
         <ul class="nav nav-pills pull-left">
                       <?php
             if(isset($_POST['user_connected'])){
-                echo '<li id="addProject" ><a href="./addProject">Ajouter un projet</a></li>';
+                echo '<li id="addProject" class="active" ><a href="./addProject">Ajouter un projet</a></li>';
             }elseif(isset($_SESSION['is_connected'])){
-                echo '<li id="addProject" ><a href="./addProject">Ajouter un projet</a></li>';
+                echo '<li id="addProject" class="active"><a href="./addProject">Ajouter un projet</a></li>';
             }
            ?>
         </ul>
+          </div>
       </div>
       <div id="signupSuccess" class="alert alert-success" style="display:none">
         <p id="signupSuccessText">Merci de vous être inscrits</p>
@@ -115,14 +118,17 @@
       <div id="signupError" class="alert alert-info" style="display:none">
         <p id="signupErrorText">Erreur lors de l'inscription</p>
       </div>
-        <div class="jumbotron" style="text-align: left;font-size: 14px ">
+        <div style="text-align: left;font-size: 14px;margin-bottom: 40px ">
           <form action="./project_added" method="post" id="project_form" name="project_form" onsubmit="return inputValidation()">
 
-          <label for="project_name">Nom du projet : </label>
-          <input size="34" id="project_name" type="text" name="name_field" value="Voiture solaire">
+          <div class="form-group">
+            <label for="project_name">Nom du projet : </label>
+            <input size="34" id="project_name" class="form-control" type="text" name="name_field" value="Voiture solaire">
             </br>
             </br>
+           </div>
 
+          <div class="form-group">  
           <label for="project_cat">Categorie : </label>
           <select id="catlist" name="catlist" form="project_form">
             <option value="art">Art</option>
@@ -135,45 +141,58 @@
           </select>
           </br>
           </br>
+          </div>
+
+          <div class="form-group">
+            <label for="project_des">Description (300 caractères minimum) : </label>
+            <textarea id="project_des" class="form-control" rows="7" cols="80" name="des_field" form="project_form">Entrez votre description ici...</textarea>
+            </br>
+            </br>
+          </div>
 
           
-          <label for="project_des">Description : </label>
-          <textarea id="project_des" name="des_field" form="project_form">Entrez votre description ici...</textarea>
-          </br>
-          </br>
-
-
+          
+        <div class="form-group">
           <label for="project_place">Lieu : </label>
-          <input size="34" id="project_place" type="text" name="place_field" value="Troyes">
+          <input size="34" id="project_place" type="text" class="form-control" name="place_field" value="Troyes">
           </br>
           </br>
+        </div>
 
+          <div class="form-group">
+            <label for="project_img">Lien de l'image : </label>
+            <input size="48" id="project_image" type="text" name="image_field" class="form-control" value="https://www.ecosources.info/images/energie_transport/voiture_solaire_Eclectic.jpg">
+            </br>
+            </br>
+          </div>
 
-          <label for="project_img">Lien de l'image : </label>
-          <input size="48" id="project_image" type="text" name="image_field" value="https://www.ecosources.info/images/energie_transport/voiture_solaire_Eclectic.jpg">
-          </br>
-          </br>
+          <div class="form-group">
+            <label for="project_video">Lien vidéo Youtube :</label>
+            <input size="48" id="project_video" type="text" class="form-control" name="video_field" value="https://www.youtube.com/watch?v=HecSq29L6DI">
+            </br>
+            </br>
+          </div>
 
-          <label for="project_video">Lien vidéo Youtube :</label>
-          <input size="48" id="project_video" type="text" name="video_field" value="https://www.youtube.com/watch?v=HecSq29L6DI">
-          </br>
-          </br>
-
-          <label for="project_funding">Financement</label>
-          </br>
+          <div class="form-group">
+            <label for="project_funding"> Mode de financement : </label>
+            
+          </div>
          
-          
-          <input type="radio" name="project_funding" value="Cagnote" checked>Cagnote<br>
-          <input type="radio" name="project_funding" value="Forfait">Forfait<br>
+          <div class="radio">
+              <label><input  type="radio" name="project_funding" value="Cagnote" checked>Cagnote</label>
+          </div>
+          <div class="radio">  
+            <label><input type="radio" name="project_funding" value="Forfait">Forfait</label>
+          </div>
           </br>
-          
-          <label for="project_goal">Montant</label>
-          <input id="project_goal" type="number" name="goal_field" value="1500">
-          </br>
-          </br>
+          <div class="form-group">
+            <label for="project_goal">Montant (€) : </label>
+            <input class="form-control" id="project_goal" type="number" name="goal_field" value="1500">
+            </br>
+            </br>
+          </div>
 
-
-          <input type="submit" value="OK">
+          <input class="btn btn-default" type="submit" value="Ajout du projet">
       </form>
 
 

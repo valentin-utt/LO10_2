@@ -26,13 +26,15 @@
         ?>
 
     <div class="container">
+        <h1 style="text-align: center">Projector</h1>
       <div class="header" style="margin-bottom: 50px">
         <ul class="nav nav-pills pull-right">
-          <li id="homebtn" ><a href="./index">Acceuil</a></li>
+          <li id="homebtn" ><a href="./index">Accueil</a></li>
           <li id="catbtn"><a href="./categories?c=art">Projets</a></li>
           <li id="aboutbtn"><a href="./about">A propos</a></li>
            <li id="connectbtn"><a href="./connect">Se connecter</a></li>
         </ul>
+        <div class="header" style="margin-bottom: 40px">
         <ul class="nav nav-pills pull-left">
                       <?php
             if(isset($_POST['user_connected'])){
@@ -42,6 +44,7 @@
             }
            ?>
         </ul>
+        </div>
       </div>
       <div id="signupSuccess" class="alert alert-success" style="display:none">
         <p id="signupSuccessText">Merci de vous être inscrits</p>

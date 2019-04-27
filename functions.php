@@ -69,6 +69,37 @@ echo "</div>";
   }
   
   
+function generateProjectListViewItem2($project,$pseudo){
+echo "<a  style='text-decoration:none; color:inherit;' href=./view?p=".$project['id'].">";
+echo "<div class=\"row well\" style=\"margin: 20px;position: relative;\">\n";
+echo "    <div class=\"col-sm-4\" >";
+echo "          <div style=\"width: 200px; height:200px;overflow: hidden;display: inline-block;background-size: cover;background-position: center;background-image: url('".$project['img']."');-moz-border-radius: 100px;webkit-border-radius: 50px;border-radius: 100px;\">\n";
+
+echo "          </div>\n";
+echo "    </div>\n";
+echo "    <div class=\"col-sm-5\" >";
+
+echo "                    <h2>".$project['name']."</h2>\n";
+echo "                    <h3>Par ".$pseudo."</h3>\n";
+echo "                    <p>".$project['place']."</p>\n";
+echo "                    <p>".$project['mode']." : ".$project['goal']." €</p>\n";
+
+echo "</div>\n";
+echo "    <div class=\"col-sm-3\" style=\"position: absolute;bottom: 0;right: 0;\">";
+
+echo "               <div class='progress' style='width:150px;height:20px;background-color: #c9dbbe;'>";
+echo "                  <div class='progress-bar' role='progressbar' aria-valuenow='".$project['fund']."'  aria-valuemin='0' aria-valuemax='".$project['goal']."' style='width:".((100 * $project['fund']) / $project['goal'])."%'>";
+echo "                      ".((100 * $project['fund']) / $project['goal'])."%";
+echo "                  </div>";
+echo "                      </div> ";
+echo "              <p>".$project['fund']." € sur ".$project['goal']." €</p> ";
+
+
+echo "</div>\n";
+
+echo "  </div>";
+echo "</a>";
+}  
   
 function generatePojectListViewItem($project,$pseudo){
     echo "<a  style='text-decoration:none; color:inherit;' href=./view?p=".$project['id'].">";
@@ -87,15 +118,18 @@ echo "                    <p>".$project['place']."</p>\n";
 echo "                    <p>".$project['mode']." : ".$project['goal']." €</p>\n";
 echo "                </th>\n";
 echo "                <th style=\"text-align: center;vertical-align: bottom; display: table-cell;\">\n";
-echo "          <progress value=".$project['fund']." max=".$project['goal']."></progress>\n";
+//echo "          <progress value=".$project['fund']." max=".$project['goal']."></progress>\n";
+echo "               <div class='progress' style='width:150px;height:20px;background-color: #c9dbbe;'>";
+echo "                  <div class='progress-bar' role='progressbar' aria-valuenow='".$project['fund']."'  aria-valuemin='0' aria-valuemax='".$project['goal']."' style='width:".((100 * $project['fund']) / $project['goal'])."%'>";
+echo "                      ".((100 * $project['fund']) / $project['goal'])."%";
+echo "                  </div>";
+echo "                      </div> ";
 echo "              <p>".$project['fund']." € sur ".$project['goal']." €</p> ";
+
+
 echo "                </th>\n";
 echo "                </tr>\n";
 echo "            </table>\n";
-//echo "            <div style=\"text-align: right;\"> ";
-//echo "          <progress value=".$project['fund']." max=".$project['goal']."></progress>\n";
-//echo "              <p>".$project['fund']." € sur ".$project['goal']." €</p> ";
-//echo "          </div>";
 echo "        </div>";
 echo "</a>";
 

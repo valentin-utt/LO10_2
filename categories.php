@@ -27,9 +27,10 @@
         ?>
       
     <div class="container">
+        <h1 style="text-align: center">Projector</h1>
       <div class="header" style="margin-bottom: 50px">
         <ul class="nav nav-pills pull-right">
-          <li id="homebtn" ><a href="./index">Acceuil</a></li>
+          <li id="homebtn" ><a href="./index">Accueil</a></li>
           <li id="catbtn" class="active"><a href="./categories">Projets</a></li>
           <li id="aboutbtn"><a href="./about">A propos</a></li>
                      <?php
@@ -46,6 +47,7 @@
           }
           ?>
         </ul>
+          <div class="header" style="margin-bottom: 40px">
         <ul class="nav nav-pills pull-left">
                       <?php
             if(isset($_POST['user_connected'])){
@@ -55,6 +57,7 @@
             }
            ?>
         </ul>
+          </div>
       </div>
       <div id="signupSuccess" class="alert alert-success" style="display:none">
         <p id="signupSuccessText">Merci de vous être inscrits</p>
@@ -65,8 +68,8 @@
       <div id="signupError" class="alert alert-info" style="display:none">
         <p id="signupErrorText">Erreur lors de l'inscription</p>
       </div>
-      <div class="header" style="margin-bottom: 50px">
-        <ul class="nav nav-pills pull-left">
+      <div class="header" style="margin-bottom: 0px">
+        <ul class="nav nav-pills nav-justified">
             <?php
             if($_GET['c']==='art'){
             echo <<<EXCERPT
@@ -155,7 +158,7 @@ EXCERPT;
             include 'functions.php';
             foreach (listProjectByCat($base, $_GET['c']) as $project) {
                 $pseudo = getProjectOwnerNamebyEmail($base, $project['owner'])[0]['pseudo'];
-                generatePojectListViewItem($project, $pseudo);
+                generateProjectListViewItem2($project, $pseudo);
             }
             ?>
         </div>
