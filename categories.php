@@ -151,8 +151,8 @@ EXCERPT;
                   ?>
         </ul>
       </div>
-        <div style="display: flex">
-            <div style="flex: 70%;">
+        <div >
+            <div>
             <?php
             include 'PDOConnect.php';
             include 'functions.php';
@@ -164,11 +164,7 @@ EXCERPT;
         </div>
             
 
-            <div style="flex: 30%;margin: 10px;height: 450px">
-                <div class='jumbotron' style="height: 450px;">
-                
-                </div>
-            </div>
+            
         </div>
         
 

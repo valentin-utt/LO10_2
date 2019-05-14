@@ -30,6 +30,8 @@ include 'curl_requests.php';
 
     <!-- Custom styles for this template -->
     <link href="static/bootstrap/css/jumbotron-narrow.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    
    
 
 
@@ -156,16 +158,54 @@ include 'curl_requests.php';
       <div class="jumbotron">
         
         <p class="lead">Le portail des projets étudiants</p>
-        <p><a class="btn btn-lg btn-success"  data-toggle="modal" href="./register">Inscrivez vous maintenant</a></p>
+        
+        <?php
+        
+            if(isset($_POST['user_connected'])){    
+                echo '<p hidden ><a class="btn btn-lg btn-success"  data-toggle="modal" href="./register">Inscrivez vous maintenant</a></p>';
+            }elseif(isset($_SESSION['is_connected'])){
+                echo '<p hidden ><a class="btn btn-lg btn-success"  data-toggle="modal" href="./register">Inscrivez vous maintenant</a></p>';
+            }else{
+                echo '<p><a class="btn btn-lg btn-success"  data-toggle="modal" href="./register">Inscrivez vous maintenant</a></p>';
+            }
+           ?>
       </div>
         
         
-        <div id="map" >
+        <div style="width: 50%; float:left" id="map" >
   <!-- Ici s'affichera la carte -->
         </div>
-        
+        <div style="width: 50%; float:right; height:400px" >
+            <canvas style="height:400px"  id="myChart"></canvas>
+        </div>
         
     </div>
+        
+        <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        //ctx.height = 900;
+var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'bar',
+
+    // The data for our dataset
+    data: {
+        labels: ['Art', 'Design et Technologies', 'Cinema', 'Gastronomie', 'Jeux', 'Musique', 'Edition'],
+        datasets: [{
+            label: 'Argent récolté',
+            backgroundColor: 'rgb(24, 188, 156)',
+            borderColor: 'rgb(24, 188, 156)',
+            data: [10, 10, 5, 2, 20, 30, 45]
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+        maintainAspectRatio: false,
+        
+    }
+});
+    </script>
 
 
       <div class="footer">
