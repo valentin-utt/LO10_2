@@ -3,8 +3,9 @@ $user ='root';
 $password='';
 $dataSourceName='mysql:host=localhost;dbname=test1';
 try{
-    $base= new PDO ($dataSourceName, $user, $password);
+    $base= new PDO ($dataSourceName, $user, $password,array('charset'=>'utf8'));
     $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $base->query("SET CHARACTER SET utf8");
 }
 catch (Exception $ex) {
     throw new MyDatabaseException( $Exception->getMessage( ) , (int)$Exception->getCode( ) );

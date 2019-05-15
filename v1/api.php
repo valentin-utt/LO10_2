@@ -41,8 +41,9 @@ switch ($_SERVER['REQUEST_METHOD']){
             $password='';
             $dataSourceName='mysql:host=localhost;dbname=test1';
             try{
-                $api_pdo= new PDO ($dataSourceName, $user, $password);
+                $api_pdo= new PDO ($dataSourceName, $user, $password, array('charset'=>'utf8'));
                 //$api_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $api_pdo->query("SET CHARACTER SET utf8");
                 $result["succes"]=true;
                 $result["message"]="Connexion à la Base de donnée réussie";
             }
@@ -68,8 +69,9 @@ switch ($_SERVER['REQUEST_METHOD']){
             $password='';
             $dataSourceName='mysql:host=localhost;dbname=test1';
             try{
-                $api_pdo= new PDO ($dataSourceName, $user, $password);
+                $api_pdo= new PDO ($dataSourceName, $user, $password, array('charset'=>'utf8'));
                 //$api_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $api_pdo->query("SET CHARACTER SET utf8");
                 $result["succes"]=true;
                 $result["message"]="Connexion à la Base de donnée réussie";
             }
@@ -110,15 +112,16 @@ switch ($_SERVER['REQUEST_METHOD']){
     case 'POST':
         if($_SERVER['REQUEST_URI']=='/LO10/v1/api/project' || $_SERVER['REQUEST_URI']=='/LO10/v1/api/project/'){
              
-             var_dump($_POST);
+             //var_dump($_POST);
              
             if(!empty($_POST['owner']) && !empty($_POST['name']) && !empty($_POST['cat']) && !empty($_POST['des']) && !empty($_POST['place']) && !empty($_POST['img']) && !empty($_POST['vid']) &&!empty($_POST['mode']) && intval(($_POST['goal'])>0) && !empty($_POST['lon']) && !empty($_POST['lat']) && intval(($_POST['fund'])>=0) ){
                 $user ='root';
                 $password='';
                 $dataSourceName='mysql:host=localhost;dbname=test1';
                 try{
-                    $api_pdo= new PDO ($dataSourceName, $user, $password);
+                    $api_pdo= new PDO ($dataSourceName, $user, $password, array('charset'=>'utf8'));
                     //$api_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    $api_pdo->query("SET CHARACTER SET utf8");
                     $result["succes"]=true;
                     $result["message"]="Connexion à la Base de donnée réussie";
                 }
@@ -167,7 +170,9 @@ switch ($_SERVER['REQUEST_METHOD']){
             $password='';
             $dataSourceName='mysql:host=localhost;dbname=test1';
             try{
-                $api_pdo= new PDO ($dataSourceName, $user, $password);
+                $api_pdo= new PDO ($dataSourceName, $user, $password, array('charset'=>'utf8'));
+                //$api_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $api_pdo->query("SET CHARACTER SET utf8");
                 $api_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $api_pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
                 $result["succes"]=true;
@@ -198,11 +203,11 @@ switch ($_SERVER['REQUEST_METHOD']){
             $requetteUpdateProjet->bindParam(':lat', strval($post_vars['lat']), PDO::PARAM_STR, 50);
             $requetteUpdateProjet->bindParam(':fund', strval($post_vars['fund']), PDO::PARAM_STR, 50);
             $requetteUpdateProjet->execute();
-            var_dump($requetteUpdateProjet->execute());
+            //var_dump($requetteUpdateProjet->execute());
             
             
             $count = $requetteUpdateProjet->rowCount();
-            var_dump($count);
+            //var_dump($count);
                 
             $result["succes"]=true;
             $result["message"]="Le projet à bien été mis à jour";
@@ -229,7 +234,10 @@ switch ($_SERVER['REQUEST_METHOD']){
             $password='';
             $dataSourceName='mysql:host=localhost;dbname=test1';
             try{
-                $api_pdo= new PDO ($dataSourceName, $user, $password);
+                
+                $api_pdo= new PDO ($dataSourceName, $user, $password, array('charset'=>'utf8'));
+                //$api_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $api_pdo->query("SET CHARACTER SET utf8");
                 $api_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $api_pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
                 $result["succes"]=true;
