@@ -1,7 +1,7 @@
 <?php
 //include 'PDOConnect.php';
 
-function generateProjectView($name,$pseudo,$cat,$place,$description,$img,$vid,$mode,$goal){
+function generateProjectView($name,$pseudo,$cat,$place,$description,$img,$vid,$mode,$goal,$chef){
     
     
   
@@ -36,16 +36,18 @@ switch ($cat){
 }
 
 
-echo "<div>";    
+
+echo "<div class='content_container'>";
+echo "<div class='col-md-8'>"; 
 echo "<table>\n";
 echo "  <tr>\n";
 echo "      <th   style='width: 800px;' colspan=\"2\">\n";
 echo "          <h1>".$name."</h1>\n";
-echo "          <h2>Un projet ".$categorie." par ".$pseudo."</h2>\n";
+echo "          <h2>Un projet ".$categorie." </h2>\n";
 echo "          \n";
 echo "      </th>\n";
 echo "      <th>\n";
-echo "          <h3>Objectif : ".$goal." €</h3>\n";
+//echo "          <h3>Objectif : ".$goal." €</h3>\n";
 echo "      </th>\n";
 echo "  </tr>\n";
 echo "  <tr>\n";
@@ -65,6 +67,16 @@ echo "      </td>\n";
 echo "  </tr>\n";
 echo "</table> ";
 echo "</div>";  
+
+
+echo "<div class='col-md-4 jumbotron'>";
+echo " <h3> ".$pseudo." </h3> ";
+echo " <h4> Chef de projet </h4> ";
+echo "<img src='".$chef['img_url']."'  ";
+
+
+echo "</div>";  
+echo "</div>"; 
 
   }
   
@@ -133,11 +145,68 @@ echo "            </table>\n";
 echo "        </div>";
 echo "</a>";
 
-}  
+} 
+
+function generateProjectTable($projectArray){
+    echo " <ol>";
+    foreach ($projectArray as $project) {
+            echo "<a href='./view?p=".$project['id']."'><li>".$project['name']."</li></a>";
+        
+    }
+    echo " </ol>";
+}
+
+
+function generateUeTable($ueArray){
+    echo " <ul>";
+    foreach ($ueArray as $ues) {
+            echo "<a href='https://etu.utt.fr/uvs/search?q=".$ues['ue_sigle']."'><li>".$ues['ue_sigle']."</li></a>";
+        
+    }
+    echo " </ul>";
+}
+
+function generateProfileView($pictureUrl, $fullname, $branch, $level, $speciality, $projectArray, $ueArray){
+    
+    echo "            <div style=\"overflow: hidden;\">\n";
+echo "            <img style=\"float: left\" src=\" ".$pictureUrl. " \" alt=\"".$fullname."\">\n";
+echo "            <h3>".$fullname."</h3>\n";
+echo "             <br>";
+echo "            <h3>".$branch.$level." ".$speciality."</h3>\n";
+echo "            <input style=\"float: right\"  class=\"btn btn-default\" type=\"submit\" value=\"contacter\">\n";
+echo "         </div>\n";
+echo "        \n";
+echo "       \n";
+echo "        <div class=\"catbox-container\">\n";
+echo "            \n";
+echo "            <div class=\"jumbotron catbox\">\n";
+echo "                <h3>Dirige</h3>\n";
+generateProjectTable($projectArray);
+echo "                <hr>\n";
+echo "          \n";
+echo "            </div>\n";
+echo "        \n";
+echo "            <div class=\"jumbotron catbox\">\n";
+echo "                <h3>Supporte</h3>\n";
+echo "          \n";
+echo "            </div>\n";
+echo "                \n";
+echo "        \n";
+echo "            <div class=\"jumbotron catbox\">\n";
+echo "                    <h3>Aime</h3>\n";
+echo "            </div>\n";
+echo "               \n";
+echo "            \n";
+echo "            <div class=\"jumbotron catbox\">\n";
+echo "                   <h3>UE suivies</h3>\n";
+generateUeTable($ueArray);
+echo "            </div>\n";
+echo "            \n";
+echo "        </div> ";
 
 
   
-
+}
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates

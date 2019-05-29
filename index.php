@@ -8,7 +8,7 @@ and open the template in the editor.
 <?php 
 //var_dump($_POST);
 session_start(); 
-//var_dump($_SESSION);
+var_dump($_SESSION);
 include 'PDOConnect.php';
 include 'functions.php';
 include 'curl_requests.php';
@@ -91,12 +91,17 @@ include 'curl_requests.php';
         
     
     <div class="container">
-        <h1 style="text-align: center">Projector</h1>
+        <div style="overflow: hidden;">
+            <img style="float: left" src="./projector.jpg" alt="Projector logo">
+            <h1 style="text-align: center; padding: 40px">Projector</h1>
+         </div>
       <div class="header" style="margin-bottom: 50px">
+        <ul class="nav nav-pills pull-left">
+            <li id="homebtn" class="active"><a href="./">Accueil</a></li>
+          <li id="catbtn"><a href="./categories?c=art">Projets</a></li>
+          <li id="aboutbtn"><a href="./about">A propos</a></li>
+        </ul>
         <ul class="nav nav-pills pull-right">
-            <li id="homebtn" class="active"><a href="./index.php">Accueil</a></li>
-          <li id="catbtn"><a href="./categories.php?c=art">Projets</a></li>
-          <li id="aboutbtn"><a href="./about.php">A propos</a></li>
           <?php
           
           if(isset($_POST['user_connection_attempt'])){ //si l'utilisateur viens de connect.php
@@ -108,18 +113,16 @@ include 'curl_requests.php';
                     echo '<li id="connectbtn"><a href="./disconnect">Se déconnecter</a></li>';
                   }else{
                        echo "<script>alert('Erreur : le mot de passe est incorect.');</script>";
-                       echo '<li id="connectbtn"><a href="./connect">Se connecter</a></li>';
+                       echo '<li id="connectbtn"><a href="./auth">Se connecter</a></li>';
                   }
               }else{
                   echo "<script>alert('Erreur : l\'utilisateur n\'existe pas.');</script>";
                   echo '<li id="connectbtn"><a href="./connect">Se connecter</a></li>';
               }
-              
-              
-          }elseif(isset($_SESSION['is_connected'])){
+          }elseif(isset($_SESSION['is_connected']) || isset($_SESSION['access_token'] )){ // si l'user est connecté
               echo '<li id="connectbtn"><a href="./disconnect">Se déconnecter</a></li>';
-          }else{
-              echo '<li id="connectbtn"><a href="./connect">Se connecter</a></li>';
+          }else{ // si l'user n'est  pas connecté
+              echo '<li id="connectbtn"><a href="http://etu.utt.fr/api/oauth/authorize?client_id=24048099025&scope=public%20private_user_account&response_type=code&state=xyz">Se connecter</a></li>';
           }
           if(isset($_POST['user_name_field'])){ //si l'utilisateur viens de register.php
               //include 'PDOConnect.php';
@@ -132,13 +135,14 @@ include 'curl_requests.php';
               }
           }
           ?>
+          
         </ul>
           <div class="header" style="margin-bottom: 40px">
-        <ul class="nav nav-pills pull-left">
+        <ul class="nav nav-pills pull-right">
             <?php
-            if(isset($_POST['user_connected'])){    
+            if(isset($_POST['user_connected'])  || isset($_SESSION['access_token'])){    
                 echo '<li id="addProject" ><a href="./addProject">Ajouter un projet</a></li>';
-            }elseif(isset($_SESSION['is_connected'])){
+            }elseif(isset($_SESSION['is_connected']) || isset($_SESSION['access_token'])){
                 echo '<li id="addProject" ><a href="./addProject">Ajouter un projet</a></li>';
             }
            ?>
@@ -159,14 +163,21 @@ include 'curl_requests.php';
         
         <p class="lead">Le portail des projets étudiants</p>
         
+        <video controls width="480" height="320">
+            <source src="./IF11_low.mp4" type="video/mp4">
+            <p>Your browser doesn't support HTML5 video. Here is
+            a <a href="./IF11_low.mp4">link to the video</a> instead.</p>
+        </video>
+        
+        
         <?php
         
             if(isset($_POST['user_connected'])){    
-                echo '<p hidden ><a class="btn btn-lg btn-success"  data-toggle="modal" href="./register">Inscrivez vous maintenant</a></p>';
+                //echo '<p hidden ><a class="btn btn-lg btn-success"  data-toggle="modal" href="./register">Inscrivez vous maintenant</a></p>';
             }elseif(isset($_SESSION['is_connected'])){
-                echo '<p hidden ><a class="btn btn-lg btn-success"  data-toggle="modal" href="./register">Inscrivez vous maintenant</a></p>';
+                //echo '<p hidden ><a class="btn btn-lg btn-success"  data-toggle="modal" href="./register">Inscrivez vous maintenant</a></p>';
             }else{
-                echo '<p><a class="btn btn-lg btn-success"  data-toggle="modal" href="./register">Inscrivez vous maintenant</a></p>';
+                //echo '<p><a class="btn btn-lg btn-success"  data-toggle="modal" href="./register">Inscrivez vous maintenant</a></p>';
             }
            ?>
       </div>

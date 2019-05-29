@@ -1,0 +1,91 @@
+openapi: 3.0.0
+servers: []
+info:
+  description: This is projector api
+  version: "1.0.0"
+  title: Projector API
+  contact:
+    email: valentin.guilloux@utt.fr
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+tags:
+  - name: Administrators
+    description: Operations available to administrators
+paths:
+  /project:
+    get:
+      tags:
+        - Administrators
+      summary: List All projects
+      operationId: listProjects
+      description: |
+        By passing in the appropriate options, you can search for
+        available inventory in the system
+      responses:
+        '200':
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/project'
+        '400':
+          description: bad input parameter
+   
+components:
+  schemas:
+    project:
+      type: object
+      required:
+        - id
+        - owner
+        - name
+        - cat
+        - description
+        - place
+        - img 
+        - vid
+        - mode
+        - goal
+        - longitude
+        - latitude
+        - fund
+      properties:
+        id:
+          type: integer
+          example: 127
+        owner:
+          type: string
+          example: "valentin.guilloux@utt.fr"
+        name:
+          type: string
+          example: 'eco-partage.com'
+        description:
+          type: string
+          example: 'Un projet de site internet éco-concu par un étudiant UTT.'
+        place:
+          type: string
+          example: 'Paris'
+        img:
+          type: string
+          example: 'https://www.ecosources.info/images/energie_transport/voiture_solaire_Eclectic.jpg'
+        vid:
+          type: string
+          example: 'https://www.youtube.com/watch?v=HecSq29L6DI'
+        mode:
+          type: string
+          example: 'Cagnote'
+        goal:
+          type: number
+          example: '150'
+        longitude:
+          type: number
+          example: '4.06649591050645'
+        latitude:
+          type: number
+          example: '48.269078'
+        fund:
+          type: number
+          example: '2452.5'

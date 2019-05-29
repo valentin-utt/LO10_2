@@ -20,26 +20,37 @@
 
   <body>
       
+      
              <?php
              session_start();
              session_destroy();
+             
+          
+                
+            
+
         ?>
 
     <div class="container">
-        <h1 style="text-align: center">Projector</h1>
+        <div style="overflow: hidden;">
+            <img style="float: left" src="./projector.jpg" alt="Projector logo">
+            <h1 style="text-align: center; padding: 40px">Projector</h1>
+         </div>
       <div class="header" style="margin-bottom: 50px">
-        <ul class="nav nav-pills pull-right">
+        <ul class="nav nav-pills pull-left">
           <li id="homebtn" ><a href="./index">Accueil</a></li>
           <li id="catbtn"><a href="./categories?c=art">Projets</a></li>
           <li id="aboutbtn"><a href="./about">A propos</a></li>
-           <li id="connectbtn"><a href="./connect">Se connecter</a></li>
+          </ul>
+        <ul class="nav nav-pills pull-right">
+           <li id="connectbtn"><a href="http://etu.utt.fr/api/oauth/authorize?client_id=24048099025&scope=public%20private_user_account&response_type=code&state=xyz">Se connecter</a></li>
         </ul>
         <div class="header" style="margin-bottom: 40px">
         <ul class="nav nav-pills pull-left">
                       <?php
-            if(isset($_POST['user_connected'])){
+            if(isset($_POST['user_connected']) || isset($_SESSION['access_token'] )){
                 //echo '<li id="addProject" ><a href="./addProject">Ajouter un projet</a></li>';
-            }elseif(isset($_SESSION['is_connected'])){
+            }elseif(isset($_SESSION['is_connected']) || isset($_SESSION['access_token'] )){
                 //echo '<li id="addProject" ><a href="./addProject">Ajouter un projet</a></li>';
             }
            ?>

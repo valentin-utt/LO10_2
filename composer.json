@@ -1,0 +1,6 @@
+{
+    "require": {
+        "aws/aws-sdk-php": "^3.95",
+        "willdurand/negotiation": "^2.3"
+    }
+}

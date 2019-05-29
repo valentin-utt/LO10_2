@@ -66,23 +66,28 @@
         ?>
 
     <div class="container">
-        <h1 style="text-align: center">Projector</h1>
+        <div style="overflow: hidden;">
+            <img style="float: left" src="./projector.jpg" alt="Projector logo">
+            <h1 style="text-align: center; padding: 40px">Projector</h1>
+         </div>
       <div class="header" style="margin-bottom: 50px">
         <ul class="nav nav-pills pull-right">
           <li id="homebtn" ><a href="./index">Accueil</a></li>
           <li id="catbtn"><a href="./categories?c=art">Projets</a></li>
           <li id="aboutbtn" ><a href="./about">A propos</a></li>
+          </ul>
+        <ul class="nav nav-pills pull-right">
                      <?php
           
           if(isset($_POST['user_connected'])){
               
               $_SESSION['is_connected']='true';
               echo '<li id="connectbtn"><a href="./disconnect">Se déconnecter</a></li>';
-          }elseif(isset($_SESSION['is_connected'])){
+          }elseif(isset($_SESSION['is_connected']) || isset($_SESSION['access_token'] ) ){
               echo '<li id="connectbtn"><a href="./disconnect">Se déconnecter</a></li>';
           }else{
               
-              echo '<li id="connectbtn"><a href="./connect">Se connecter</a></li>';
+              echo '<li id="connectbtn"><a href="http://etu.utt.fr/api/oauth/authorize?client_id=24048099025&scope=public%20private_user_account&response_type=code&state=xyz">Se connecter</a></li>';
           }
           ?>
         </ul>

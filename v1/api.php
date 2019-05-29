@@ -1,42 +1,39 @@
+
+
+
 <?php
 
 //var_dump($_SERVER);
 //header('Content-Type: application/json');
 //$negotiator = new \Negotiation\Negotiator();
-//require_once "vendor/autoload.php";
+require_once "../vendor/autoload.php";
 
 $acceptHeader = $_SERVER['HTTP_ACCEPT'];
 //var_dump($acceptHeader);
-/*
 $negotiator = new \Negotiation\Negotiator();
 
-$acceptHeader = $_SERVER['HTTP_ACCEPT'];
-$priorities   = array('application/json , application/xml');
+$priorities   = array('application/json');
 
 $mediaType = $negotiator->getBest($acceptHeader, $priorities);
 
-$value = $mediaType->getType();
+//var_dump($mediaType);
+
+//$value = $mediaType->getValue();
 // $value == 'text/html; charset=UTF-8'
-var_dump($value);
-//header('Content-Type: '.$value);
-*/
-/*
-$priorities   = array( 'application/json', 'application/xml');
 
-//$mediaType = $negotiator->getBest($acceptHeader, $priorities);
+if ($mediaType==null){
+    echo "Negociation Failed";
+}else{
+    header('Content-type: '.$mediaType->getValue());
+    
+}
 
-//$value = $mediaType->getType();
-// $value == 'text/html; charset=UTF-8'
-//var_dump($value);
 
-var_dump($_SERVER['HTTP_ACCEPT']);
-*/
-header('Content-type: application/json');
 
 
 switch ($_SERVER['REQUEST_METHOD']){
     case 'GET':
-        if($_SERVER['REQUEST_URI']=='/LO10/v1/api/project' || $_SERVER['REQUEST_URI']=='/LO10/v1/api/project/'){
+        if(preg_match('/LO10\/v1\/api\/project($|\?.*|\/)/',$_SERVER['REQUEST_URI'])==1 && !preg_match('/LO10\/v1\/api\/project\/\b\d+\b/',$_SERVER['REQUEST_URI'])==1){
             $user ='root';
             $password='';
             $dataSourceName='mysql:host=localhost;dbname=test1';
@@ -63,6 +60,7 @@ switch ($_SERVER['REQUEST_METHOD']){
             $result["results"]["nb"] = count($response);
             $result["results"]["project"] = $response;
             echo json_encode(mb_convert_encoding($result, 'UTF-8', 'UTF-8'));
+            exit;
         }
         elseif(preg_match('/LO10\/v1\/api\/project\/\b\d+\b/',$_SERVER['REQUEST_URI'])==1){
             $user ='root';
