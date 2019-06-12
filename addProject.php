@@ -85,6 +85,12 @@
         <ul class="nav nav-pills pull-left">
           <li id="homebtn" ><a href="./index">Accueil</a></li>
           <li id="catbtn"><a href="./categories?c=art">Projets</a></li>
+          <?php
+            if(isset($_SESSION['access_token'])){
+               
+            }
+            ?>
+          
           <li id="aboutbtn"><a href="./about">A propos</a></li>
           </ul>
         <ul class="nav nav-pills pull-right">
@@ -95,6 +101,8 @@
               $_SESSION['is_connected']='true';
               echo '<li id="connectbtn"><a href="./disconnect">Se déconnecter</a></li>';
           }elseif(isset($_SESSION['is_connected']) || isset($_SESSION['access_token']) ){
+              echo '<li id="addProject"  class="active"><a href="./addProject">Ajouter un projet</a></li>'; 
+              echo '<li id="profil" ><a href="./profile">Profil</a></li>';
               echo '<li id="connectbtn"><a href="./disconnect">Se déconnecter</a></li>';
           }else{
               

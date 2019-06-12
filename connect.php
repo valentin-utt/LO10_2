@@ -106,7 +106,7 @@
         <p id="signupErrorText">Erreur lors de l'inscription</p>
       </div>
         <div style="margin-bottom: 50px">
-          <form action="./index.php" method="post" id="connect_form" name="connect_form" onsubmit="return inputValidation()">
+          <form action="./index" method="post" id="connect_form" name="connect_form" onsubmit="return inputValidation()">
 
               <div class="form-group">
                 <label for="user_email">Email : </label>

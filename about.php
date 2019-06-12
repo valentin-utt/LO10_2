@@ -33,7 +33,14 @@
         <ul class="nav nav-pills pull-left">
           <li id="homebtn" ><a href="./index">Accueil</a></li>
           <li id="catbtn"><a href="./categories?c=art">Projets</a></li>
+
           <li id="aboutbtn" class="active"><a href="./about">A propos</a></li>
+            <?php
+            if(isset($_SESSION['access_token'])){
+                
+            }
+            ?>
+          
           </ul>
         <ul class="nav nav-pills pull-right">
                     <?php
@@ -43,6 +50,8 @@
               $_SESSION['is_connected']='true';
               echo '<li id="connectbtn"><a href="./disconnect">Se déconnecter</a></li>';
           }elseif( isset($_SESSION['is_connected']) || isset($_SESSION['access_token'] ) ){
+              echo '<li id="addProject" ><a href="./addProject">Ajouter un projet</a></li>'; 
+              echo '<li id="profil" ><a href="./profile">Profil</a></li>';
               echo '<li id="connectbtn"><a href="./disconnect">Se déconnecter</a></li>';
           }else{
               
@@ -72,7 +81,15 @@
         <p id="signupErrorText">Erreur lors de l'inscription</p>
       </div>
       <div class="jumbotron">
-          <p>BlaBla sur le service et la RGPD </p>
+          <p>La base légale de projector.net est l’article 6.1.a du règlement européen en matière de protection des données personnelles (consentement). </p>
+          <p>les destinataires ou les catégories de destinataires des données à caractère personnel sont projector SARL. </p>
+          <p>les destinataires de données sont le responsable de traitement, ses services internes en charge de la gestion de la mailing list, le sous-traitant opérant la gestion du serveur web (AmazonWebServices), ainsi que toute personne légalement autorisée à accéder aux données (services judiciaires, le cas échéant). </p>
+          <p>La durée de traitement des données est limité au temps pendant lequel vous êtes inscrit à nos services de communication, étant entendu que vous pouvez vous y désinscrire à tout moment.</p>
+          <p>Le responsable du traitement est la SARL projector ( 6 rue Marie Curie, 1000 Troyes, contact@projector.net)
+
+Vous disposez du droit de demander au responsable du traitement l’accès aux données à caractère personnel, la rectification ou l’effacement de celles-ci, ou une limitation du traitement relatif à la personne concernée, ou du droit de s’opposer au traitement et du droit à la portabilité des données.  
+
+Vous avez également le droit d’introduire une réclamation auprès d’une autorité de contrôle.</p>
       </div>
 
 

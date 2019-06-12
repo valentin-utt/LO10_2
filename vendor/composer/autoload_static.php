@@ -12,13 +12,19 @@ class ComposerStaticInit40a6e0f924ec3d9467d430051f4de82d
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'b067bc7112e384b61c701452d53a14a8' => __DIR__ . '/..' . '/mtdowling/jmespath.php/src/JmesPath.php',
+        '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
         '8a9dc1de0ca7e01f3e08231539562f61' => __DIR__ . '/..' . '/aws/aws-sdk-php/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        'S' => 
+        array (
+            'Slim\\' => 5,
+        ),
         'P' => 
         array (
             'Psr\\Http\\Message\\' => 17,
+            'Psr\\Container\\' => 14,
         ),
         'N' => 
         array (
@@ -28,11 +34,19 @@ class ComposerStaticInit40a6e0f924ec3d9467d430051f4de82d
         array (
             'JmesPath\\' => 9,
         ),
+        'I' => 
+        array (
+            'Interop\\Container\\' => 18,
+        ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
+        ),
+        'F' => 
+        array (
+            'FastRoute\\' => 10,
         ),
         'A' => 
         array (
@@ -41,9 +55,17 @@ class ComposerStaticInit40a6e0f924ec3d9467d430051f4de82d
     );
 
     public static $prefixDirsPsr4 = array (
+        'Slim\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/slim/slim/Slim',
+        ),
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
+        'Psr\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/container/src',
         ),
         'Negotiation\\' => 
         array (
@@ -52,6 +74,10 @@ class ComposerStaticInit40a6e0f924ec3d9467d430051f4de82d
         'JmesPath\\' => 
         array (
             0 => __DIR__ . '/..' . '/mtdowling/jmespath.php/src',
+        ),
+        'Interop\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
@@ -65,9 +91,23 @@ class ComposerStaticInit40a6e0f924ec3d9467d430051f4de82d
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
+        'FastRoute\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nikic/fast-route/src',
+        ),
         'Aws\\' => 
         array (
             0 => __DIR__ . '/..' . '/aws/aws-sdk-php/src',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'Pimple' => 
+            array (
+                0 => __DIR__ . '/..' . '/pimple/pimple/src',
+            ),
         ),
     );
 
@@ -76,6 +116,7 @@ class ComposerStaticInit40a6e0f924ec3d9467d430051f4de82d
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit40a6e0f924ec3d9467d430051f4de82d::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit40a6e0f924ec3d9467d430051f4de82d::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit40a6e0f924ec3d9467d430051f4de82d::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

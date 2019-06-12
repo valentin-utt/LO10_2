@@ -1,7 +1,7 @@
 <?php
-$user ='phpmyadmin';
-$password='phpmyadmin';
-$dataSourceName='mysql:host=phpmyadmin.cev0qobeeqdv.eu-west-1.rds.amazonaws.com:3306;dbname=rdsdb';
+$user ='root';
+$password='';
+$dataSourceName='mysql:host=localhost:3306;dbname=test1';
 try{
     $base= new PDO ($dataSourceName, $user, $password,array('charset'=>'utf8'));
     $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -9,7 +9,7 @@ try{
 }
 catch (Exception $ex) {
     throw new MyDatabaseException( $Exception->getMessage( ) , (int)$Exception->getCode( ) );
-    //die ("Erreur ! " . $ex->getMessage());
+    
 }
 
 function listUser(PDO $pdo){ 
@@ -169,10 +169,7 @@ function getUserbyEmail(PDO $pdo,$email){
    
    /*** execute the querry***/
    $stmt->execute();
-   
-    //$requette = "INSERT INTO project_table VALUES (NULL,'$owner','$name','$cat','$des','$place','$img','$vid', '$mode','$goal','$lon','$lat')";
-    //var_dump($requette);
-    //$pdo->exec($requette);
+
   }
   
   
@@ -186,9 +183,7 @@ function getUserbyEmail(PDO $pdo,$email){
    /*** execute the querry***/
    $stmt->execute();
    
-    //$requette = "INSERT INTO project_table VALUES (NULL,'$owner','$name','$cat','$des','$place','$img','$vid', '$mode','$goal','$lon','$lat')";
-    //var_dump($requette);
-    //$pdo->exec($requette);
+
   }
   
   
@@ -202,11 +197,7 @@ function getUserbyEmail(PDO $pdo,$email){
    /*** execute the querry***/
    $stmt->execute();
    
-   
-   
-    //$requette = "INSERT INTO project_table VALUES (NULL,'$owner','$name','$cat','$des','$place','$img','$vid', '$mode','$goal','$lon','$lat')";
-    //var_dump($requette);
-    //$pdo->exec($requette);
+ 
   }
   
     function addUserlikeProject(PDO $pdo,$project_id, $user_id){
@@ -219,9 +210,7 @@ function getUserbyEmail(PDO $pdo,$email){
    /*** execute the querry***/
    $stmt->execute();
    
-    //$requette = "INSERT INTO project_table VALUES (NULL,'$owner','$name','$cat','$des','$place','$img','$vid', '$mode','$goal','$lon','$lat')";
-    //var_dump($requette);
-    //$pdo->exec($requette);
+
   }
   
   function addFundToProjectFromUser(PDO $pdo,$project_id, $user_id){
@@ -234,9 +223,7 @@ function getUserbyEmail(PDO $pdo,$email){
    /*** execute the querry***/
    $stmt->execute();
    
-    //$requette = "INSERT INTO project_table VALUES (NULL,'$owner','$name','$cat','$des','$place','$img','$vid', '$mode','$goal','$lon','$lat')";
-    //var_dump($requette);
-    //$pdo->exec($requette);
+
   }
  
  
@@ -260,9 +247,7 @@ function getUserbyEmail(PDO $pdo,$email){
    /*** execute the querry***/
    $stmt->execute();
    
-    //$requette = "INSERT INTO project_table VALUES (NULL,'$owner','$name','$cat','$des','$place','$img','$vid', '$mode','$goal','$lon','$lat')";
-    //var_dump($requette);
-    //$pdo->exec($requette);
+   
   }
   
     function addProjectNolocation(PDO $pdo,$owner, $name, $cat, $des , $place ,$img, $vid, $mode,$goal,$fund){
@@ -284,13 +269,6 @@ function getUserbyEmail(PDO $pdo,$email){
    /*** execute the querry***/
    $stmt->execute();
    
-    //$requette = "INSERT INTO project_table VALUES (NULL,'$owner','$name','$cat','$des','$place','$img','$vid', '$mode','$goal','$lon','$lat')";
-    //var_dump($requette);
-    //$pdo->exec($requette);
   }
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 

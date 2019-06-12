@@ -27,6 +27,11 @@
         padding: 10px;
         
     }
+    
+    .col {
+        padding-right:7px;
+        padding-left:7px;
+     }
 
     * {
         margin: 0;
@@ -51,7 +56,7 @@
         <ul class="nav nav-pills pull-left">
           <li id="homebtn" ><a href="./index">Accueil</a></li>
           <li id="catbtn"><a href="./categories?c=art">Projets</a></li>
-          <li id="aboutbtn" class="active"><a href="./about">A propos</a></li>
+          <li id="aboutbtn"><a href="./about">A propos</a></li>
           </ul>
         <ul class="nav nav-pills pull-right">
                     <?php
@@ -61,6 +66,8 @@
               $_SESSION['is_connected']='true';
               echo '<li id="connectbtn"><a href="./disconnect">Se déconnecter</a></li>';
           }elseif( isset($_SESSION['is_connected']) || isset($_SESSION['access_token'] ) ){
+               echo '<li id="addProject" ><a href="./addProject">Ajouter un projet</a></li>';
+               echo '<li id="profil" class="active" ><a href="./profile">Profil</a></li>';
               echo '<li id="connectbtn"><a href="./disconnect">Se déconnecter</a></li>';
           }else{
               
@@ -70,13 +77,7 @@
         </ul>
           <div class="header" style="margin-bottom: 40px">
         <ul class="nav nav-pills pull-left">
-                      <?php
-            if(isset($_POST['user_connected'])){
-                echo '<li id="addProject" ><a href="./addProject">Ajouter un projet</a></li>';
-            }elseif(isset($_SESSION['is_connected'])){
-                echo '<li id="addProject" ><a href="./addProject">Ajouter un projet</a></li>';
-            }
-           ?>
+ 
         </ul>
               </div>
       </div>
@@ -84,16 +85,16 @@
       <?php
         include 'PDOConnect.php';
         include 'functions.php';
+        include 'classes/RDSHandler.php';
+
         
-        $CurrentUser = getUserbyToken($base,$_SESSION['access_token'])[0];
-        //var_dump($CurrentUser);
-        $ue_table=getUEByUserId($base, $CurrentUser['id']);
-        //var_dump($ue_table);
-        $project_table=getProjectsTableByOwner($base,$CurrentUser['email']);
-        //var_dump($project_table);
-        
-        
-         generateProfileView($CurrentUser['img_url'],$CurrentUser['pseudo'],$CurrentUser['branch'],$CurrentUser['level'],$CurrentUser['speciality'], $project_table, $ue_table );
+        $RDSHandler = new RDSHandler();
+        $CurrentUser = $RDSHandler->getUserbyToken($RDSHandler->getBase(),$_SESSION['access_token'])[0];
+        $ue_table=$RDSHandler->getUEByUserId($RDSHandler->getBase(), $CurrentUser['id']);
+        $project_table=$RDSHandler->getProjectsTableByOwner($RDSHandler->getBase(),$CurrentUser['email']);
+        $liked_project_table=$RDSHandler->listLikedProjectByUserId($RDSHandler->getBase(),$CurrentUser['id']);
+        $user_fund_table = $RDSHandler->getFundTableFromUser($RDSHandler->getBase(),$CurrentUser['id']);
+        generateProfileViewWithoutButton($CurrentUser['img_url'],$CurrentUser['pseudo'],$CurrentUser['branch'],$CurrentUser['level'],$CurrentUser['speciality'],$CurrentUser['email'], $project_table, $liked_project_table, $user_fund_table , $ue_table );
       
       ?>
         

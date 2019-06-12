@@ -24,8 +24,8 @@
 function uploadToS3($fileURL){
 	// AWS Info
 	$bucketName = 'projector.image';
-	$IAM_KEY = 'AKIAJHV2MMOCGBXDCOGQ';
-	$IAM_SECRET = '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';
+	$IAM_KEY = 'AKIAVPHZFRBJVXICVUU5';
+	$IAM_SECRET = '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';
 	// Connect to AWS
 	try {
 		// You may need to change the region. It will say in the URL when the bucket is open
@@ -38,6 +38,7 @@ function uploadToS3($fileURL){
 				),
 				'version' => 'latest',
 				'region'  => 'eu-west-1'
+                            
 			)
 		);
 	} catch (Exception $e) {
@@ -89,8 +90,8 @@ function uploadToS3($fileURL){
 function deleteFromS3($keyName){
    	// AWS Info
 	$bucketName = 'projector.image';
-	$IAM_KEY = 'AKIAJHV2MMOCGBXDCOGQ';
-	$IAM_SECRET = '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';
+	$IAM_KEY = 'AKIAVPHZFRBJVXICVUU5';
+	$IAM_SECRET = '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';
 	// Connect to AWS
 	try {
 		// You may need to change the region. It will say in the URL when the bucket is open

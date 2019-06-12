@@ -113,7 +113,7 @@
         <p id="signupErrorText">Erreur lors de l'inscription</p>
       </div>
       <div style="margin-bottom: 50px">
-          <form action="./index.php" name="register_form" onsubmit="return inputValidation()" method="post" id="register_form">
+          <form action="./index" name="register_form" onsubmit="return inputValidation()" method="post" id="register_form">
 
           <div class="form-group">
             <label for="user_name">Nom : </label>
