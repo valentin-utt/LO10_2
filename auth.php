@@ -43,8 +43,8 @@ if ($err) {
  */
    session_start();
    $EtuUttAuth = new EtuUttAuth();
-   var_dump($_GET);
-   var_dump($_POST);
+   //var_dump($_GET);
+   //var_dump($_POST);
    $authCode= $_GET['authorization_code'];
    $token= json_decode($EtuUttAuth->getAccessToken($authCode))->access_token;
    //$_SESSION['access_token']=json_decode($response)->access_token;

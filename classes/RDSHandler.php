@@ -291,7 +291,7 @@ class RDSHandler implements IRDSHandler {
 
         /*         * * bind the paramaters ** */
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT, 10);
-        $stmt->bindParam(':ue_sigle', $ue_sigle, PDO::PARAM_STR, 6);
+        $stmt->bindParam(':ue_sigle', $ue_sigle, PDO::PARAM_STR, 50);
 
         /*         * * execute the querry** */
         $stmt->execute();
