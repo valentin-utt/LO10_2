@@ -50,7 +50,7 @@ switch ($_SERVER['REQUEST_METHOD']) {
         echo $ProjectorApi->GET($project_id, $format);
         }
         elseif (preg_match('/LO10\/api\/stats/', $_SERVER['REQUEST_URI']) == 1) {
-            var_dump(parse_str(parse_url ( $_SERVER['REQUEST_URI'], PHP_URL_QUERY ),$querry_array));
+            //var_dump(parse_str(parse_url ( $_SERVER['REQUEST_URI'], PHP_URL_QUERY ),$querry_array));
             if (array_key_exists ( "cat" , $querry_array)){
                 echo $StatApi->GET($format,$querry_array['cat'] , 0.0, 0.0, 0.0);
             }else{

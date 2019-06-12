@@ -13,8 +13,8 @@ include('./Interface/IS3Handler.php');
 class S3handler implements IS3Handler {
 
     public static $bucketName = 'projector.image';
-    public static $IAM_KEY = 'AKIAVPHZFRBJVXICVUU5';
-    public static $IAM_SECRET = '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';
+    public static $IAM_KEY = 'XXXXXX';
+    public static $IAM_SECRET = 'XXXXXX';
 
     public function __construct() {
         
